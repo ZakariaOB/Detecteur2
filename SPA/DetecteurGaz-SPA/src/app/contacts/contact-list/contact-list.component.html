@@ -1,0 +1,75 @@
+<h2 style="float: left;padding-bottom: 20px; color: green">> Liste des contacts de : {{user?.nom}} {{user?.prenom}} </h2>
+<a [routerLink]="['/user/']" style="float: right;padding-bottom: 20px; color: green;cursor: pointer; text-decoration: underline; font-size: 2em"> Utilisateurs </a>
+<br />
+<br />
+<br />
+<br />
+<div class="form-row">
+    <div class="form-group col-md-2">
+      <h4>Email : </h4>
+    </div>
+    <div class="form-group  col-md-6">
+      <input name="PhoneNumber" #Mobile="ngModel" [(ngModel)]="contactEmail" class="form-control">
+    </div>
+    <div class="form-group  col-md-4">
+        <button type="button"  class="btn btn-primary" (click)="addContact()"  data-dismiss="modal">Add contact</button>
+    </div>
+  </div>
+<div style="height: 500px">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Téléphone</th>
+        <th scope="col">Addresse</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tr class="pointer" *ngFor="let contact of service.pagedItems">
+      <td >{{contact.nom}} {{contact.prenom}}</td>
+      <td >{{contact.telephone}}</td>
+      <td >{{contact.address}}</td>
+      <td >{{contact.email}}</td>
+      <td><button  class="btn btn-sm btn-outline-danger">X</button></td>
+    </tr>
+  </table>
+  <!-- pager -->
+  <ul *ngIf="service.pager.Pages && service.pager.Pages.length" class="pagination">
+    <li [ngClass]="{disabled:service.pager.CurrentPage === 1}">
+        <a (click)="service.setPage(1)">First</a>
+    </li>
+    <li [ngClass]="{disabled:service.pager.CurrentPage === 1}">
+        <a (click)="service.setPage(service.pager.CurrentPage - 1)">Previous</a>
+    </li>
+    <li *ngFor="let page of service.pager.Pages" [ngClass]="{active:service.pager.CurrentPage === page}">
+        <a (click)="service.setPage(page)">{{page}}</a>
+    </li>
+    <li [ngClass]="{disabled:service.pager.CurrentPage === service.pager.TotalPages}">
+        <a (click)="service.setPage(service.pager.CurrentPage + 1)">Next</a>
+    </li>
+    <li [ngClass]="{disabled:service.pager.CurrentPage === service.pager.TotalPages}">
+        <a (click)="service.setPage(service.pager.TotalPages)">Last</a>
+    </li>
+</ul>
+</div>
+
+<div class="modal fade" id="modalcontact" tabindex="-1" role="dialog" aria-labelledby="modalcontact" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{this.service.selectedContact?.nom}}
+          {{this.service.selectedContact?.prenom}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-contact></app-contact>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="updateContact()" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

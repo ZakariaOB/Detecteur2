@@ -1,0 +1,32 @@
+- ng new BookingShare-SPA
+- ng serve
+- ng serve --open (Ouvrir l'application)
+- npm i jquery@1.9.1 --save
+- npm i popper.js@^1.14.7 --save
+- npm install bootstrap font-awesome
+- git clone https://github.com/ZakariaOB/DetecteurGazSPA.git
+- git remote add origin https://github.com/ZakariaOB/DetecteurGazSPA.git
+
+
+To do 
+
+- OK => Bootstarp grid design with pagination
+- OKContact list
+- ok Alertes list
+- Crud with firbase
+
+Firebase usage (Mosh hamadani)
+
+- firbase / Angular (Mosh hamadani)
+- firebase.google.com
+- npm install firebase angularfire2
+- Note : Real time database vs FireStore => Completly different
+- let coure of courses$ | async => async keyword will unsubscribe from the remote db automatically (Without explicitly doing that).
+
+- git clone https://github.com/ZakariaOB/DetecteurGazSPA.git
+- npm update
+- ng serve --open
+- HelianthaColor "#CCFF00"
+- git add . => staging
+- git commit -m'Update Steps Simo'
+- git push

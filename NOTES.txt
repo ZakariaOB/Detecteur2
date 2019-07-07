@@ -1,0 +1,25 @@
+
+1. Angular app
+ - Show users : 
+   User (Id, Nom, Prenom, Email , Telephone, Address)
+   Contact(Id, Nom, Prenom, Telephone, Email, Address, UserId)
+   Capteur (Id, SensorValue, Status, DateTime)
+ - Delete a user
+ - update user contact list
+
+ To do : 25-06-2019
+ - Crud user / contact / capteur
+
+
+ To do 03/07/19
+
+ - Users contacts link + Crud contact
+ - Receiving new alerts => Bootsratp
+ - Check uncheck alerts .
+
+
+
+
+
+
+

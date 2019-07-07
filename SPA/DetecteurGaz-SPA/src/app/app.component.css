@@ -1,0 +1,17 @@
+.title {
+    color: green;
+    margin-top: 20px;
+}
+
+
+.logo {
+    width: 180px;
+    height: 100px;
+    align-content: center;
+    float: right;
+    margin-right: 5px;
+}
+
+.body {
+    padding: 20px;
+}

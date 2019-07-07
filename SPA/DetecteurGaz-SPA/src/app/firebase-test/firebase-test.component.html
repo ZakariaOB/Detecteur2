@@ -1,0 +1,14 @@
+<div>
+  <ul>
+    <li *ngFor="let u of users">
+      {{u | json}}
+      <button (click)="updateUser(u)">Update</button>
+      <button (click)="deleteUser(u)">Remove</button>
+    </li>
+  </ul>
+  <button (click)="addObjTest()">Add test</button>
+  <p>
+    {{objAsync | async | json}}
+  </p>
+  <button (click)="refreshDummyUserData()">REFRESH DUMMY FIRBASEDATA</button>
+</div>

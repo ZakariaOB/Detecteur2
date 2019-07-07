@@ -1,0 +1,31 @@
+<div class="user">
+  <form #form="ngForm">
+    <!--<input type="hidden" name="contactKey" #userId="ngModel" [(ngModel)]="service.selectedContact.Key">-->
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Nom</label>
+        <input name="FirstName" #FullName="ngModel" [(ngModel)]="service.selectedContact.FirstName" class="form-control"
+          required>
+        <!--<div class="validation-error" *ngIf="FullName.invalid && FullName.touched">This field is required.</div>-->
+      </div>
+      <div class="form-group  col-md-6">
+        <label>Prénom</label>
+        <input name="LastName" #Position="ngModel" [(ngModel)]="service.selectedContact.LastName" class="form-control">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Email</label>
+        <input name="Email" #EMPCode="ngModel" [(ngModel)]="service.selectedContact.Email" class="form-control">
+      </div>
+      <div class="form-group  col-md-6">
+        <label>Téléphone : </label>
+        <input name="PhoneNumber" #Mobile="ngModel" [(ngModel)]="service.selectedContact.PhoneNumber" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Addresse : </label>
+      <textarea name="Address" rows="3" #Mobile="ngModel" [(ngModel)]="service.selectedContact.Address" class="form-control"></textarea>
+    </div>
+  </form>
+</div>

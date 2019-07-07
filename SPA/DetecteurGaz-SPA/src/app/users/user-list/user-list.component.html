@@ -1,0 +1,68 @@
+<h2 style="float: left;padding-bottom: 20px; color: green">> 
+  Liste des utilisateurs </h2>
+<br />
+<div style="height: 500px">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Téléphone</th>
+        <th scope="col">Addresse</th>
+        <th scope="col">Email</th>
+        <th scope="col">Contact list</th>
+        <th scope="col">Alertes</th>
+      </tr>
+    </thead>
+    <tr class="pointer" *ngFor="let user of service.pagedItems">
+      <td >{{user.prenom}} {{user.nom}}</td>
+      <td >{{user.telephone}}</td>
+      <td >{{user.address}}</td>
+      <td>{{user.email}}</td>
+      <td><a [routerLink]="['/contact/', user.id]" href="">Contact list</a></td>
+      <td><a [routerLink]="['/capteur/', user.id]" href="">Alertes</a><img *ngIf="user.hasAlerts" class="alarm" 
+        src="../../../assets/images/alertisimple.png" alt=""></td>
+      <td><button (click)="onEditUser(user)" class="btn btn-primary" data-toggle="modal"
+          data-target="#modalUser">Edit</button></td>
+      <td><button (click)="onDelete(user.Id)" class="btn btn-sm btn-outline-danger">X</button></td>
+    </tr>
+  </table>
+  <!-- pager -->
+  <ul *ngIf="service.pager.Pages && service.pager.Pages.length" class="pagination">
+    <li [ngClass]="{disabled:service.pager.CurrentPage === 1}">
+        <a (click)="service.setPage(1)">First</a>
+    </li>
+    <li [ngClass]="{disabled:service.pager.CurrentPage === 1}">
+        <a (click)="service.setPage(service.pager.CurrentPage - 1)">Previous</a>
+    </li>
+    <li *ngFor="let page of service.pager.Pages" [ngClass]="{active:service.pager.CurrentPage === page}">
+        <a (click)="service.setPage(page)">{{page}}</a>
+    </li>
+    <li [ngClass]="{disabled:service.pager.CurrentPage === service.pager.TotalPages}">
+        <a (click)="service.setPage(service.pager.CurrentPage + 1)">Next</a>
+    </li>
+    <li [ngClass]="{disabled:service.pager.CurrentPage === service.pager.TotalPages}">
+        <a (click)="service.setPage(service.pager.TotalPages)">Last</a>
+    </li>
+</ul>
+</div>
+
+<div class="modal fade" id="modalUser" tabindex="-1" role="dialog" aria-labelledby="modalUser" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{this.service.selectedUser?.prenom}}
+          {{this.service.selectedUser?.nom}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-user></app-user>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateUser()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

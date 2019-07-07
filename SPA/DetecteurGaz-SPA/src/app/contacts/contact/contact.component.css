@@ -1,0 +1,13 @@
+.contact {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+label {
+    float: left;
+    font-weight: bold;
+}
+
+.btn-colored {
+    background-color: green !important;
+}

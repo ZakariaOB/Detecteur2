@@ -1,0 +1,43 @@
+<h2 style="float: left;padding-bottom: 20px; color: green">> Liste des enregistrements du capteur de :
+  {{user?.prenom}} {{user?.nom}} </h2>
+<a [routerLink]="['/user/']"
+  style="float: right;padding-bottom: 20px; color: green;cursor: pointer; text-decoration: underline; font-size: 2em">
+  Utilisateurs </a>
+<br />
+<div style="height: 500px; width: 1500px;">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Status</th>
+        <!--<th scope="col">Valeur</th>-->
+      </tr>
+    </thead>
+    <tr class="pointer" *ngFor="let capteur of service.pagedItems">
+      <td>{{capteur.dateValue}}</td>
+      <!--<td>{{capteur.Status}}<span>
+          <img *ngIf="capteur.StatusAlert" class="alarm" src="../../../assets/images/alertisimple.png" alt="">
+          <img *ngIf="!capteur.StatusAlert" class="alarm" src="../../../assets/images/sensorOkimg.png" alt="">
+        </span></td>-->
+      <td>{{capteur.sensorValue}}</td>
+    </tr>
+  </table>
+  <!-- pager -->
+  <ul *ngIf="service.pager.Pages && service.pager.Pages.length" class="pagination">
+    <li [ngClass]="{disabled:service.pager.CurrentPage === 1}">
+      <a (click)="service.setPage(1)">First</a>
+    </li>
+    <li [ngClass]="{disabled:service.pager.CurrentPage === 1}">
+      <a (click)="service.setPage(service.pager.CurrentPage - 1)">Previous</a>
+    </li>
+    <li *ngFor="let page of service.pager.Pages" [ngClass]="{active:service.pager.CurrentPage === page}">
+      <a (click)="service.setPage(page)">{{page}}</a>
+    </li>
+    <li [ngClass]="{disabled:service.pager.CurrentPage === service.pager.TotalPages}">
+      <a (click)="service.setPage(service.pager.CurrentPage + 1)">Next</a>
+    </li>
+    <li [ngClass]="{disabled:service.pager.CurrentPage === service.pager.TotalPages}">
+      <a (click)="service.setPage(service.pager.TotalPages)">Last</a>
+    </li>
+  </ul>
+</div>
